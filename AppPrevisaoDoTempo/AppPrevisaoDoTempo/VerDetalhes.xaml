@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://xamarin.com/schemas/2014/forms"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="AppPrevisaoDoTempo.VerDetalhes">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Style x:Key="labelStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily" Value="Roboto-Black" />
+                <Setter Property="TextColor" Value="#000000" />
+            </Style>
+            <Style x:Key="buttonStyle" TargetType="Button">
+                <Setter Property="FontSize" Value="Small" />
+                <Setter Property="FontFamily" Value="Roboto-Black" />
+                <Setter Property="TextColor" Value="Black" />
+                <Setter Property="BorderRadius" Value="3" />
+                <Setter Property="BackgroundColor" Value="#03DAC5" />
+            </Style>
+            <Style x:Key="fieldStyle" TargetType="Label">
+                <Setter Property="FontSize" Value="Medium" />
+                <Setter Property="Margin" Value="10,0,0,0" />
+            </Style>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+    
+    <ContentPage.Content>
+        <StackLayout Padding="10,20,10,10">
+
+            <Label Text="Cidade" Style="{StaticResource labelStyle}" />
+            <Label Text="{Binding Titulo}" Style="{StaticResource fieldStyle}"/>
+            
+            <Label Text="Temperatura"  Style="{StaticResource labelStyle}" />
+            <Label Text="{Binding Temperatura}" Style="{StaticResource fieldStyle}" />
+            
+            <Label Text="Vento" Style="{StaticResource labelStyle}" />
+            <Label Text="{Binding Vento}" Style="{StaticResource fieldStyle}" />
+
+            <Label Text="Humidade" Style="{StaticResource labelStyle}" />
+            <Label Text="{Binding Humidade}" Style="{StaticResource fieldStyle}" />
+
+            <Label Text="Visibilidade" Style="{StaticResource labelStyle}" />
+            <Label Text="{Binding Visibilidade}" Style="{StaticResource fieldStyle}" />
+
+            <Label Text="Hora do Nascer do Sol" Style="{StaticResource labelStyle}" />
+            <Label Text="{Binding NascerDoSol}" Style="{StaticResource fieldStyle}" />
+
+            <Label Text="Hora do Por do Sol" Style="{StaticResource labelStyle}" />
+            <Label Text="{Binding PorDoSol}" Style="{StaticResource fieldStyle}" />
+
+            <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
+                <Button Text="Cancelar" Clicked="OnCancelClicked" Style="{StaticResource buttonStyle}" />
+            </StackLayout>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>
