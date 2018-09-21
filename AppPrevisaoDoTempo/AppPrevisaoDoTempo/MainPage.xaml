@@ -3,7 +3,7 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:AppPrevisaoDoTempo"
              x:Class="AppPrevisaoDoTempo.MainPage"
-             Title="Aplicativo Metereológico">
+             Title="Aplicativo Metereológico">  
 
     <ContentPage.Resources>
         <ResourceDictionary>
@@ -49,7 +49,7 @@
                    VerticalOptions="Center"
                    Margin="5,0"
                    BackgroundColor="White"
-                   Placeholder="Nome da cidade"
+                   Placeholder="Nome da Cidade"
                    PlaceholderColor="LightGray"
                    TextColor="Black" />
 
@@ -58,11 +58,12 @@
                     HorizontalOptions="Center"
                     VerticalOptions="Center"
                     Style="{StaticResource buttonStyle}"
-                    Clicked="GetWeatherBtn_Clicked" />
+                    Clicked="GetWeatherBtn_Clicked"/>
 
-        </Grid>
+        </Grid>        
 
-        <ScrollView VerticalOptions="FillAndExpand">
+
+        <ScrollView VerticalOptions="FillAndExpand" BackgroundColor="Gray">
             <StackLayout Padding="10,10,10,10" HorizontalOptions="Start">
 
                 <Grid BackgroundColor="#FFFFFF" Padding="10, 10, 10, 10">
@@ -78,26 +79,43 @@
                         <ColumnDefinition Width="*" />
                     </Grid.ColumnDefinitions>
 
-                    <Label Text="Cidade" Style="{StaticResource labelStyle}" Grid.Row="0" Grid.Column="0" />
-                    <Label Text="{Binding Titulo}" Style="{StaticResource fieldStyle}" Grid.Row="1" Grid.Column="0"/>
+                    <Label Text="Cidade:" Style="{StaticResource labelStyle}" Grid.Row="0" Grid.Column="0" />
+                    <Label Text="{Binding Titulo}" Style="{StaticResource fieldStyle}" Grid.Row="1" Grid.Column="0" FontSize="Large" />
+
+                    <ActivityIndicator x:Name="actInd"
+                        IsRunning="{Binding IsLoading}"
+                        IsVisible="{Binding IsLoading}" 
+                        Color="Red"
+                        Grid.Row="0"
+                        Grid.Column="1"/>
 
                     <Image Source="{Binding ImageUrl}" HeightRequest="100" WidthRequest="100" 
                            HorizontalOptions="Start" VerticalOptions="Start"
                            Grid.Row="0" Grid.Column="1" Grid.RowSpan="2"/>
 
-                    <Label Text="Temperatura"  Style="{StaticResource labelStyle}"  Grid.Row="2" Grid.Column="0" />
-                    <Label Text="{Binding Temperatura}" Style="{StaticResource fieldStyle}"  Grid.Row="3" Grid.Column="0"/>
+                    <Label Text="Temperatura:"  Style="{StaticResource labelStyle}"  Grid.Row="2" Grid.Column="0" />
+                    <Label Text="{Binding Temperatura}" Style="{StaticResource fieldStyle}"  Grid.Row="3" Grid.Column="0" FontSize="Large"/>
+
+                    <Button x:Name="verDetalhes" Text="Ver detalhes"
+                            IsEnabled="False"
+                            Grid.Row="3" Grid.Column="1"
+                            HorizontalOptions="Center"
+                            VerticalOptions="Center"
+                            Style="{StaticResource buttonStyle}"
+                            BackgroundColor="Orange"
+                            Clicked="verDetalhes_Clicked" />
 
                 </Grid>
 
                 <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
-                    <Button x:Name="verDetalhes" Text="Ver detalhes"
+
+                    <Button x:Name="salvarFavorito" Text="Adicionar Favorito"
                             IsEnabled="False"
-                            Grid.Row="4" Grid.Column="0"
+                            Grid.Row="4" Grid.Column="1"
                             HorizontalOptions="Center"
                             VerticalOptions="Center"
                             Style="{StaticResource buttonStyle}"
-                            Clicked="verDetalhes_Clicked" />
+                            Clicked="salvarFavorito_Clicked" />
 
                     <Button x:Name="removerFavorito" Text="Remover Favorito"
                             IsEnabled="False"
@@ -107,32 +125,37 @@
                             Style="{StaticResource buttonStyle}"
                             Clicked="removerFavorito_Clicked" />
 
-                    <Button x:Name="salvarFavorito" Text="Adicionar Favorito"
-                            IsEnabled="False"
-                            Grid.Row="4" Grid.Column="1"
-                            HorizontalOptions="Center"
-                            VerticalOptions="Center"
-                            Style="{StaticResource buttonStyle}"
-                            Clicked="salvarFavorito_Clicked" />
                 </StackLayout>
 
+                <Grid BackgroundColor="#FFFFFF" Padding="10, 10, 10, 10">
 
-                <Label Text="Favoritos:"  Margin="10" Style="{StaticResource labelStyle}" />
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="Auto" />
+                        <RowDefinition Height="Auto" />
+                    </Grid.RowDefinitions>
 
-                <ListView x:Name="listView" ItemSelected="OnListItemSelected">
-                    <ListView.ItemTemplate>
-                        <DataTemplate>
-                            <ViewCell>
-                                <StackLayout Margin="20,10,10,10" Orientation="Vertical" HorizontalOptions="FillAndExpand">
-                                    <Label Text="{Binding Nome}" 
-                                           VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand"
-                                            Style="{StaticResource labelStyle}"/>
-                                </StackLayout>
-                            </ViewCell>
-                        </DataTemplate>
-                    </ListView.ItemTemplate>
-                </ListView>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
 
+                    <Label Text="Favoritos:" Style="{StaticResource labelStyle}" Grid.Row="0" HorizontalTextAlignment="Center" FontSize="Medium"/>
+
+                    <ListView  x:Name="listView" ItemSelected="OnListItemSelected" BackgroundColor="White" Grid.Row="1" VerticalOptions="StartAndExpand">
+                        <ListView.ItemTemplate>
+                            <DataTemplate>
+                                <ViewCell>
+                                    <StackLayout Margin="20,10,10,10" Orientation="Vertical" HorizontalOptions="FillAndExpand" VerticalOptions="StartAndExpand">
+                                        <Label Text="{Binding Nome}" 
+                                               VerticalTextAlignment="Center" HorizontalOptions="StartAndExpand"
+                                               Style="{StaticResource labelStyle}"/>
+                                    </StackLayout>
+                                </ViewCell>
+                            </DataTemplate>
+                        </ListView.ItemTemplate>
+                    </ListView>
+                    
+                </Grid>
+                
             </StackLayout>
         </ScrollView>
     </StackLayout>

@@ -27,25 +27,25 @@
     <ContentPage.Content>
         <StackLayout Padding="10,20,10,10">
 
-            <Label Text="Cidade" Style="{StaticResource labelStyle}" />
+            <Label Text="Cidade:" Style="{StaticResource labelStyle}" />
             <Label Text="{Binding Titulo}" Style="{StaticResource fieldStyle}"/>
             
-            <Label Text="Temperatura"  Style="{StaticResource labelStyle}" />
+            <Label Text="Temperatura:"  Style="{StaticResource labelStyle}" />
             <Label Text="{Binding Temperatura}" Style="{StaticResource fieldStyle}" />
             
-            <Label Text="Vento" Style="{StaticResource labelStyle}" />
+            <Label Text="Vento:" Style="{StaticResource labelStyle}" />
             <Label Text="{Binding Vento}" Style="{StaticResource fieldStyle}" />
 
-            <Label Text="Humidade" Style="{StaticResource labelStyle}" />
+            <Label Text="Umidade:" Style="{StaticResource labelStyle}" />
             <Label Text="{Binding Humidade}" Style="{StaticResource fieldStyle}" />
 
-            <Label Text="Visibilidade" Style="{StaticResource labelStyle}" />
+            <Label Text="Visibilidade:" Style="{StaticResource labelStyle}" />
             <Label Text="{Binding Visibilidade}" Style="{StaticResource fieldStyle}" />
 
-            <Label Text="Hora do Nascer do Sol" Style="{StaticResource labelStyle}" />
+            <Label Text="Hora do Nascer do Sol:" Style="{StaticResource labelStyle}" />
             <Label Text="{Binding NascerDoSol}" Style="{StaticResource fieldStyle}" />
 
-            <Label Text="Hora do Por do Sol" Style="{StaticResource labelStyle}" />
+            <Label Text="Hora do Por do Sol:" Style="{StaticResource labelStyle}" />
             <Label Text="{Binding PorDoSol}" Style="{StaticResource fieldStyle}" />
 
             <StackLayout Orientation="Horizontal" HorizontalOptions="Center">
